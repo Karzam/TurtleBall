@@ -14,13 +14,12 @@ GameManager.prototype.create = function()
     game.stage.backgroundColor = '#22A7F0';
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y = 250;
 
-    this.cloudManager = new CloudManager();
+    this.basketManager = new BasketManager();
     this.ball = new Ball();
 }
 
 GameManager.prototype.render = function()
 {
-    this.cloudManager.render();
+    this.basketManager.render();
 }

@@ -2,19 +2,20 @@ class Ball
 {
     constructor()
     {
-        this.startPos = {x: game.world.centerX / 2, y: game.world.centerY / 1.4};
-        this.moveSpeed = 6;
+        this.startPos = {x: game.world.centerX, y: game.world.centerY * 1.5};
+        this.moveSpeed = 8;
         this.angleSpeed = 0.4;
 
         this.sprite = game.add.sprite(this.startPos.x, this.startPos.y, "ball");
+        this.sprite.scale.setTo(scaleRatio * 3, scaleRatio * 3);
 
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-        game.physics.arcade.gravity.y = 800;
+        game.physics.arcade.gravity.y = 1400;
         this.sprite.body.allowGravity = false;
+        this.sprite.body.collideWorldBounds = true;
+        this.sprite.body.bounce.set(0.8);
 
-        console.log(scaleRatio);
         this.sprite.anchor.setTo(0.5, 0.5);
-        this.sprite.angle = 0;
 
         this.sprite.inputEnabled = true;
         this.sprite.input.enableDrag();
@@ -38,6 +39,7 @@ class Ball
 
     dragStop()
     {
+        this.sprite.input.enabled = false;
         this.sprite.body.allowGravity = true;
 
         let x = (this.startPos.x - this.sprite.x) * this.moveSpeed;
