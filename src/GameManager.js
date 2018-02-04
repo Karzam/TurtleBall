@@ -9,17 +9,17 @@ GameManager = function() {}
 GameManager.prototype = Object.create(Phaser.Sprite.prototype);
 GameManager.prototype.constructor = GameManager;
 
+let baskets;
+
+let basketCollisionGroup;
+let ballCollisionGroup;
+
 GameManager.prototype.create = function()
 {
-    game.stage.backgroundColor = '#22A7F0';
-
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    this.basketManager = new BasketManager();
-    this.ball = new Ball();
+    levelManager = new LevelManager();
+    levelManager.create();
 }
 
 GameManager.prototype.render = function()
 {
-    this.basketManager.render();
 }

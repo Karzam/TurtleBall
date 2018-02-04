@@ -7,7 +7,6 @@
 // ------------------------------------------------------------------------------------------------
 
 let game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.CANVAS, 'world', {preload: preload, create: create, render: render});
-let scaleRatio = window.devicePixelRatio / 3;
 let gameManager;
 
 function preload()
